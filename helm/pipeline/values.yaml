@@ -1,0 +1,20 @@
+app:
+  name: ordersv25-app
+  namespace: devhubtest
+  cluster: .apps.cluster-mwqln.mwqln.sandbox2329.opentlc.com
+
+git:
+  branch: main
+  repo: https://github.com/devhub-mad/ordersv25-app-backend
+  org: devhub-mad
+  name: ordersv25-app-backend
+
+image:
+  host: image-registry.openshift-image-registry.svc:5000/devhubtest/
+  name: ordersv25-app-backend
+  tag: latest
+
+
+pipelineStorage:
+  pvcSize: 2Gi
+  storageClassName: ""

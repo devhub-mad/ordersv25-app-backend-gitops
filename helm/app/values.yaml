@@ -1,0 +1,34 @@
+applicationName: ordersv25-app-backend
+namespace: devhubtest
+targetEnvironment: dev
+version: "1.0.0"
+port: 8080
+targetPort: 8080
+routes: []
+deploymentStrategy:
+  type: RollingUpdate
+  rollingMaxSurge: 25%
+  rollingMaxUnavailable: 20%
+replicaCount: 1
+health:
+  livenessEndpoint: /actuator/health
+  readinessEndpoint: /actuator/health
+  probeDelay: 5
+  probePeriod: 10
+  probeTimeout: 2
+env: []
+autoscaling:
+  enabled: false
+namespace:
+  enabled: true
+  name: devhubtest
+  argocd:
+    name: default
+
+replicaCount: 1
+
+image:
+  repository: image-registry.openshift-image-registry.svc:5000/devhubtest//ordersv25-app-backend
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: latest
